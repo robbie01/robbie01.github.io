@@ -44,6 +44,11 @@ img {
 <script>
 
 document.getElementById("st").onclick = async e => {
+  let firefox = typeof InstallTrigger !== 'undefined'
+  if (!firefox) {
+    e.target.textContent = 'Chrome and Edge have a serious audio looping bug that prevents any and all enjoyment that might come out of this demonstration. Please use Firefox instead.'
+    return
+  }
   let s = document.getElementById('s')
   let a = document.getElementById('a')
   let i = document.querySelector('img')

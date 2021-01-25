@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--AniList Autorec script, adapted from hoh's Automail userscript. Wish Automail wasn't so buggy to the point where you can't even navigate AL properly half the time.-->
+<html>
+    <body>
+        <input type="text" placeholder="Username"><button>Autorec!</button>
+        <pre></pre>
+        <script>
+            let pre = document.querySelector('pre')
+            let sub = document.querySelector('button')
+            let inp = document.querySelector('input')
+            sub.addEventListener('click', async () => {
+                while (pre.firstChild) pre.removeChild(pre.firstChild)
+                let res = await fetch('https://graphql.anilist.co', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: `query($user: String) {
+                            User(name: $user) {
+                                statistics {
+                                    anime {
+                                        meanScore
+                                        standardDeviation
+                                    }
+                                }
+                            }
+                            MediaListCollection(userName: $user, type: ANIME, status_not: PLANNING) {
+                                lists {
+                                    entries {
+                                        mediaId
+                                        score(format: POINT_100)
+                                        status
+                                        media {
+                                            recommendations(sort: RATING_DESC, perPage: 5) {
+                                                nodes {
+                                                    rating
+                                                    mediaRecommendation {
+                                                        id
+                                                        title { romaji }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }`,
+                        variables: { user: inp.value.trim() }
+                    })
+                })
+                let { data } = await res.json()
+                let entries = data.MediaListCollection.lists.reduce((acc, { entries }) => acc.concat(entries), [])
+                let existingIds = new Set(entries.map(({ mediaId }) => mediaId))
+                let { meanScore, standardDeviation } = data.User.statistics.anime
+                let recs = new Map()
+                entries.filter(({ score }) => score).forEach(({ score, media }) => {
+                    let z = (score - meanScore) / standardDeviation
+                    media.recommendations.nodes.forEach(({ mediaRecommendation: rec, rating }) => {
+                        if (rec != null && !existingIds.has(rec.id) && rating > 0) {
+                            if (!recs.has(rec.id)) {
+                                recs.set(rec.id, { title: rec.title.romaji, score: 0 })
+                            }
+                            recs.get(rec.id).score += z * (2 - 1/rating)
+                        }
+                    })
+                })
+                Array.from(recs).sort(([ida, { score: a }], [idb, { score: b }]) => b - a).forEach(([id, { title, score }]) => {
+                    pre.appendChild(document.createTextNode(`${score.toFixed(2).padStart(5)} `))
+                    let a = document.createElement('a')
+                    a.href = `https://anilist.co/anime/${id}`
+                    a.textContent = title
+                    pre.appendChild(a)
+                    pre.appendChild(document.createElement('br'))
+                })
+            })
+        </script>
+    </body>
+</html>

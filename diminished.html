@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>G Major</title>
+    </head>
+    <body>
+        <input type="file" id="f" accept="audio/*"><br>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.15/Tone.js" integrity="sha512-m484N6z1C3HX3bXWUGHXFoaHWgDZxhMebKemEYfEsyr4gUadYZkFp9lW/ZiP+QptN8NM16l3wRSNYDX24lqokg==" crossorigin="anonymous"></script>
+        <script>
+            const f = document.getElementById('f')
+
+            const INTERVALS = [0, 6]
+            const ps = INTERVALS.map(i => new Tone.PitchShift(i).toDestination())
+            const gain = new Tone.Gain(1/INTERVALS.length).fan(...ps)
+            const player = new Tone.Player({ autostart: true, onload: () => URL.revokeObjectURL(player.get().url) }).connect(gain)
+
+            f.onchange = async () => {
+                await Tone.start()
+                if (f.files[0]) {
+                    player.load(URL.createObjectURL(f.files[0]))
+                }
+            }
+        </script>
+    </body>
+</html>

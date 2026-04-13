@@ -1,0 +1,104 @@
+a {
+    text-decoration: underline;
+}
+
+h1, .link-title {
+    text-transform: lowercase;
+}
+
+.link-title {
+    font-weight: 500;
+}
+
+h1:hover, span:hover > .link-title {
+    text-transform: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:root {
+        --t-bg: black;
+        --t-text: white;
+
+        --t-nav: rgb(0, 31, 33);
+        --t-nav-link: #76d9ef;
+        --t-nav-link-hover: #5ca7b8;
+    }
+
+    :link {
+        color: rgb(120, 170, 255);
+    }
+
+    :visited {
+        color: rgb(200, 162, 255);
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav .divider {
+        display: none;
+    }
+}
+
+:root {
+    --t-bg: #e6e6e6;
+    --t-text: #404e3b;
+    --t-nav: #404e3b;
+    --t-nav-link: #e6e6e6;
+    --t-nav-link-hover: #7B9669;
+
+    font-size: 62.5%;
+
+    background-color: var(--t-bg);
+    color: var(--t-text);
+
+    margin: 0 2.4rem;
+}
+
+body {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    margin: 2.4rem auto;
+
+    width: 100%;
+    max-width: 96rem;
+}
+
+nav {
+    display: flex;
+    background: var(--t-nav);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: var(--t-nav-link);
+}
+
+nav a {
+    position: relative;
+}
+
+nav a, nav :link, nav :visited {
+    color: var(--t-nav-link);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--t-nav-link-hover);
+}
+
+nav a:not(:link):hover::before {
+    content: "";
+    pointer-events: none;
+    background-image: url("youarehere.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -3.8rem;
+    display: block;
+    width: 10rem;
+    height: 4rem;
+}

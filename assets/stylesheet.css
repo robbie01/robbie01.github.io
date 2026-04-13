@@ -6,7 +6,7 @@ h1, .link-title {
     text-transform: lowercase;
 }
 
-.link-title {
+strong {
     font-weight: 500;
 }
 
@@ -39,7 +39,13 @@ h1:hover, span:hover > .link-title {
     }
 
     nav .divider {
-        display: none;
+        font-size: 0;
+        border-bottom: 0.1rem solid gray;
+        margin: 1rem 0;
+    }
+
+    nav a:not(:first-child):not(:link):hover::before {
+        left: 16rem;
     }
 }
 

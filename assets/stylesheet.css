@@ -109,18 +109,20 @@ nav a:not(:link):hover::before {
     height: 4rem;
 }
 
-.resume-link {
-    font-size: 0;
+a.resume-link {
+    color: transparent;
+    position: relative;
 }
 
 .resume-link::before {
-    font-size: 1.5rem;
+    position: absolute;
+    color: var(--t-nav-link);
     content: "resume";
     text-decoration: underline;
 }
 
-.resume-link:hover {
-    font-size: inherit;
+a.resume-link:hover {
+    color: var(--t-nav-link);
 }
 
 .resume-link:hover::before {

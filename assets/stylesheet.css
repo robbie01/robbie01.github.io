@@ -84,10 +84,12 @@ nav {
 }
 
 nav a {
+    color: var(--t-nav-link);
     position: relative;
+    text-decoration: none;
 }
 
-nav a, nav :link, nav :visited {
+nav a:link, nav a:visited {
     color: var(--t-nav-link);
     text-decoration: underline;
 }

@@ -89,7 +89,7 @@ nav a {
 
 nav a, nav :link, nav :visited {
     color: var(--t-nav-link);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 nav a:hover {
@@ -107,4 +107,22 @@ nav a:not(:link):hover::before {
     display: block;
     width: 10rem;
     height: 4rem;
+}
+
+.resume-link {
+    font-size: 0;
+}
+
+.resume-link::before {
+    font-size: 1.5rem;
+    content: "resume";
+    text-decoration: underline;
+}
+
+.resume-link:hover {
+    font-size: inherit;
+}
+
+.resume-link:hover::before {
+    display: none;
 }

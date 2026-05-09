@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>beezchurger (BuckeyeCTF 2025)</title>
+</head>
+<body>
+
+<h1 id="forensics-beezchurger">forensics / beezchurger (BuckeyeCTF 2025)</h1>
+<p>499 points | 7 solves</p>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<p>Full mind of mind, Empty belly of belly<br>
+You have recieved a gift.<br>
+beezchurger</p>
+</blockquote>
+<p><strong>Challenge author</strong>: gammascreed</p>
+<p><strong>Files</strong>: <a href="./beezchurger.gif">beezchurger.gif</a></p>
+<hr>
+<p><em>TL;DR</em>: Each frame&#39;s palette is a permutation of frame 0&#39;s palette.
+Specifically, each frame&#39;s palette is rotated rightward with respect to frame 0&#39;s.
+The number of rightward rotations is an ASCII character code.</p>
+<p>The following is written in a &quot;literate Rust&quot; fashion.</p>
+<p>Housekeeping:</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> std::{collections::BTreeMap, fs::File};
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+</code></pre>
+<p>Initialize the GIF decoder:</p>
+<pre><code class="lang-rs">    <span class="hljs-keyword">let</span> opts = gif::DecodeOptions::new();
+    <span class="hljs-keyword">let</span> f = File::open(<span class="hljs-string">"beezchurger.gif"</span>).unwrap();
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> decoder = opts.read_info(f).unwrap();
+</code></pre>
+<p>Declare the RGB to index map, which maps RGB colors to their index in frame 0&#39;s palette:</p>
+<pre><code class="lang-rs">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> rgb_to_index = None::&lt;BTreeMap&lt;[<span class="hljs-keyword">u8</span>; <span class="hljs-number">3</span>], <span class="hljs-keyword">usize</span>&gt;&gt;;
+</code></pre>
+<p>Start decoding frames:</p>
+<pre><code class="lang-rs">    <span class="hljs-function"><span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-title">Some</span>(<span class="hljs-params">frame</span>) </span>= decoder.read_next_frame().unwrap() {
+</code></pre>
+<p>Get the frame&#39;s palette, chunked by threes:</p>
+<pre><code class="lang-rs">        <span class="hljs-keyword">let</span> (pal, []) = frame.palette.as_ref().unwrap().as_chunks::&lt;<span class="hljs-number">3</span>&gt;()
+            <span class="hljs-keyword">else</span> { <span class="hljs-built_in">unreachable!</span>() };
+</code></pre>
+<p>Initialize the RGB to index map if it hasn&#39;t been initialized yet:</p>
+<pre><code class="lang-rs">        <span class="hljs-keyword">let</span> rgb_to_index = rgb_to_index.get_or_insert_with(|<span class="hljs-type">|
+            pal</span>.iter().copied().enumerate().map(|<span class="hljs-type">(i</span>, x)| <span class="hljs-type">(x</span>, i)).collect());
+</code></pre>
+<p>Get the corresponding character and print it:</p>
+<pre><code class="lang-rs">        <span class="hljs-keyword">let</span> c = (<span class="hljs-number">256</span> - rgb_to_index[&amp;pal[<span class="hljs-number">0</span>]]) <span class="hljs-keyword">as</span> <span class="hljs-keyword">u8</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>;
+        <span class="hljs-built_in">print!</span>(<span class="hljs-string">"{c}"</span>);
+    }
+</code></pre>
+<p>Print a newline for courtesy and leave:</p>
+<pre><code class="lang-rs">    <span class="hljs-built_in">println</span>!();
+}
+</code></pre>
+<hr>
+<p>&copy; 2025 Robert B. Langer, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
+
+</body>
+</html>

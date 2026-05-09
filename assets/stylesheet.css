@@ -2,7 +2,7 @@ a {
     text-decoration: underline;
 }
 
-h1, .link-title {
+h1, .link-title, h3 {
     text-transform: lowercase;
 }
 

@@ -2,8 +2,13 @@ a {
     text-decoration: underline;
 }
 
-h1, .link-title, h3 {
+h1, .link-title, h2 {
     text-transform: lowercase;
+}
+
+h2 {
+    font-size: 117%;
+    margin: 1em 0;
 }
 
 strong {

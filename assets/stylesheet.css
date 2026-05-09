@@ -54,6 +54,12 @@ h1:hover, span:hover > .link-title {
     }
 }
 
+@media print {
+    nav {
+        display: none !important;
+    }
+}
+
 :root {
     --t-bg: #e6e6e6;
     --t-text: #404e3b;
@@ -87,6 +93,7 @@ nav {
     padding: 1rem;
     border-radius: 0.5rem;
     color: var(--t-nav-link);
+    margin-bottom: 1.895rem;
 }
 
 nav a {

@@ -13,88 +13,105 @@
     <header>
       <h1>Robert B. Langer</h1>
       <nav>
-        <a href="/">keepin' it professional</a>
-        <span class="divider" aria-hidden="true">&nbsp;//&nbsp;</span>
-        <a>keepin' it unprofessional</a>
-        <span class="divider" aria-hidden="true">&nbsp;//&nbsp;</span>
-        <a class="resume-link" href="/resume.html">résumé</a>
+        <ul>
+          <li><a href="/">keepin' it professional</a></li>
+          <li><a>keepin' it unprofessional</a></li>
+          <li><a class="resume-link" href="/resume.html">résumé</a></li>
+        </ul>
       </nav>
     </header>
 
-    <em>hic est scientia insana<br>(here be mad science)</em>
+    <main>
+      <em>hic est scientia insana<br>(here be mad science)</em>
 
-    <h2>Reverse engineering</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/robbie01/stcm2-asm">stcm2-asm</a>:
-        a disassembler and assembler for a large, practical subset of the STCM2 format used in some Idea Factory games.<br>
-        usable for developing mods for 5 known titles (and likely more)
-      </li>
-    </ul>
+      <section aria-labelledby="reverse-engineering-label">
+        <h2 id="reverse-engineering-label">Reverse engineering</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/robbie01/stcm2-asm">stcm2-asm</a>:
+            a disassembler and assembler for a large, practical subset of the STCM2 format used in some Idea Factory games.<br>
+            usable for developing mods for 5 known titles (and likely more)
+          </li>
+        </ul>
+      </section>
 
-    <h2>Cryptography</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/robbie01/cubehash-rs">cubehash-rs</a>:
-        rust implementation of <a href="https://cubehash.cr.yp.to/">djb's CubeHash</a> (SHA-3 semifinalist), optimized for 4 different SIMD instruction sets
-      </li>
-      <li>
-        <a href="https://github.com/robbie01/groestl-gfni">groestl-gfni</a>:
-        implementation of <a href="https://www.groestl.info/">Gr&oslash;stl</a>-256 (SHA-3 finalist), accelerated with AVX512GFNI instructions, constant-time
-      </li>
-    </ul>
+      <section aria-labelledby="cryptography-label">
+        <h2 id="cryptography-label">Cryptography</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/robbie01/cubehash-rs">cubehash-rs</a>:
+            rust implementation of <a href="https://cubehash.cr.yp.to/">djb's CubeHash</a> (SHA-3 semifinalist), optimized for 4 different SIMD instruction sets
+          </li>
+          <li>
+            <a href="https://github.com/robbie01/groestl-gfni">groestl-gfni</a>:
+            implementation of <a href="https://www.groestl.info/">Gr&oslash;stl</a>-256 (SHA-3 finalist), accelerated with AVX512GFNI instructions, constant-time
+          </li>
+        </ul>
+      </section>
 
-    <h2>Emulation</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/robbie01/Chip8Emu">Chip8Emu</a>:
-        one of my first "real" software projects. <span style="text-decoration: underline dotted;" title="note: this is intended to be a flex.">i wrote this mostly over the course of 8th grade</span>
-      </li>
-      <li>
-        <a href="https://github.com/robbie01/rv-bsnes">rv-bsnes</a> (unfinished):
-        an incremental project to get bsnes running in the browser.<br>
-        at this moment, is built on a highly performant RISC-V interpreter<br>
-        <a href="/bsnes">live demo</a>
-      </li>
-    </ul>
+      <section aria-labelledby="emulation-label">
+        <h2 id="emulation-label">Emulation</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/robbie01/Chip8Emu">Chip8Emu</a>:
+            one of my first "real" software projects. <span style="text-decoration: underline dotted;" title="note: this is intended to be a flex.">i wrote this mostly over the course of 8th grade</span>
+          </li>
+          <li>
+            <a href="https://github.com/robbie01/rv-bsnes">rv-bsnes</a> (unfinished):
+            an incremental project to get bsnes running in the browser.<br>
+            at this moment, is built on a highly performant RISC-V interpreter<br>
+            <a href="/bsnes">live demo</a>
+          </li>
+        </ul>
+      </section>
 
-    <h2>Boring & practical</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/robbie01/nanomp3">nanomp3</a>:
-        a pure-Rust and (eventually) safe MP3 (MPEG-2 Audio Layer III) decoder. a translation of minimp3. for embedded systems.
-      </li>
-    </ul>
+      <section aria-labelledby="boring-and-practical-label">
+        <h2 id="boring-and-practical-label">Boring & practical</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/robbie01/nanomp3">nanomp3</a>:
+            a pure-Rust and (eventually) safe MP3 (MPEG-2 Audio Layer III) decoder. a translation of minimp3. for embedded systems.
+          </li>
+        </ul>
+      </section>
 
-    <h2>Grandiose & impractical</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/robbie01/ninewire">ninewire</a> (experimental, unfinished):
-        experiments in 9P, remote filesystems over LFNs (long fat networks), peer-to-peer sharing, noise protocol, reliable datagram layers (UDT), et cetera
-      </li>
-    </ul>
+      <section aria-labelledby="grandiose-and-impractical-label">
+        <h2 id="grandiose-and-impractical-label">Grandiose & impractical</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/robbie01/ninewire">ninewire</a> (experimental, unfinished):
+            experiments in 9P, remote filesystems over LFNs (long fat networks), peer-to-peer sharing, noise protocol, reliable datagram layers (UDT), et cetera
+          </li>
+        </ul>
+      </section>
 
-    <h2>Games</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/robbie01/c4">c4</a>:
-        3D connect four demonstrating wgpu, in a beautiful environment sourced from a diffusion model
-      </li>
-      <li>
-        <a href="https://github.com/robbie01/ttt">ttt</a>:
-        play tic-tac-toe against the computer, rendered entirely in software
-      </li>
-      <li>
-        <a>bookshelf</a> (not yet released):
-        break through your reading backlog by turning books into virtual currency.<br>
-        a fun (for me) experiment with Common Lisp and Raylib. art by Ashley Thompson
-      </li>
-    </ul>
+      <section aria-labelledby="games-label">
+        <h2 id="games-label">Games</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/robbie01/c4">c4</a>:
+            3D connect four demonstrating wgpu, in a beautiful environment sourced from a diffusion model
+          </li>
+          <li>
+            <a href="https://github.com/robbie01/ttt">ttt</a>:
+            play tic-tac-toe against the computer, rendered entirely in software
+          </li>
+          <li>
+            <a>bookshelf</a> (not yet released):
+            break through your reading backlog by turning books into virtual currency.<br>
+            a fun (for me) experiment with Common Lisp and Raylib. art by Ashley Thompson
+          </li>
+        </ul>
+      </section>
 
-    <h2>Cats</h2>
-    Coming soon...<br><br>
+      <section aria-labelledby="cats-label">
+        <h2 id="cats-label">Cats</h2>
+        Coming soon...<br><br>
+      </section>
+    </main>
 
     <footer>
-      &copy; 2026, Robert B. Langer
+      &copy; <time>2026</time>, Robert B. Langer
     </footer>
+  </body>
 </html>

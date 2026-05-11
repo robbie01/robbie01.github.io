@@ -13,61 +13,86 @@
     <header>
       <h1>Robert B. Langer</h1>
       <nav>
-        <a>keepin' it professional</a>
-        <span class="divider" aria-hidden="true">&nbsp;//&nbsp;</span>
-        <a href="/unprofessional.html">keepin' it unprofessional</a>
-        <span class="divider" aria-hidden="true">&nbsp;//&nbsp;</span>
-        <a class="resume-link" href="/resume.html">résumé</a>
+        <ul>
+          <li><a>keepin' it professional</a></li>
+          <li><a href="/unprofessional.html">keepin' it unprofessional</a></li>
+          <li><a class="resume-link" href="/resume.html">résumé</a></li>
+        </ul>
       </nav>
     </header>
+    <main>
+      <section aria-labelledby="bio-label">
+        <h2 id="bio-label">Bio</h2>
+        <p>
+          Lifelong CS student. Began in <time>2008</time> (then aged 5), matriculated <time>2021</time>, graduated <time>2025</time>.<br>
+          Now seeking entry-level/junior researcher positions and PhD program opportunities.<br>
+          I love binary analysis, reverse engineering, forensics, cryptography, and automating all of this with LLMs.
+        </p>
+      </section>
 
-    <h2>Bio</h2>
-    <p>
-      Lifelong CS student. Began in 2008 (then aged 5), matriculated 2021, graduated 2025.<br>
-      Now seeking entry-level/junior researcher positions and PhD program opportunities.<br>
-      I love binary analysis, reverse engineering, forensics, cryptography, and automating all of this with LLMs.
-    </p>
+      <section aria-labelledby="links-label">
+        <h2 id="links-label">Links</h2>
+        <dl>
+          <dt>Email<span class="weak"> (institutional)</span></dt>
+          <dd><a href="mailto:langer.53@osu.edu">langer.53@osu.edu</a></dd>
 
-    <h2>Links</h2>
-    <span><strong class="link-title">Email</strong> (institutional): <a href="mailto:langer.53@osu.edu">langer.53@osu.edu</a></span><br>
-    <span><strong class="link-title">Email</strong> (personal): <a>&lt;firstname&gt;&lt;lastname&gt;03@gmail.com</a></span><br>
-    <span><strong class="link-title">GitHub</strong>: <a href="https://github.com/robbie01">@robbie01</a></span><br>
-    <span><strong class="link-title">LinkedIn</strong>: <a href="https://www.linkedin.com/in/robert-b-langer">linkedin.com/in/robert-b-langer</a></span><br>
-    <span><strong class="link-title">ORCID</strong>: <a href="https://orcid.org/0009-0009-5200-7259">0009-0009-5200-7259</a></span><br>
-    <span><strong class="link-title">Lab</strong>: <a href="https://carteryagemann.com/pages/w3cil-lab.html">W3CIL Lab</a> (World 3 Cybersecurity Innovations Lab Lab)</span>
+          <dt>Email<span class="weak"> (personal)</span></dt>
+          <dd><a>&lt;firstname&gt;&lt;lastname&gt;03@gmail.com</a></dd>
 
-    <h2>Research</h2>
-    <div>
-      <strong>INSuRE+C</strong>, The Ohio State University (2025&ndash;2026)<br>
-      <em>Undergraduate Researcher</em><br>
-      <br>
-      CAE in Cybersecurity Community partnership with the National Security Agency (NSA).
-      Developed an agentic pipeline for automated static analysis and binary classification using Ghidra, with outputs mapped to vectors of Malware Behavior Catalog (MBC) labels.
-      Work was performed under the guidance of Drs. <a href="https://carteryagemann.com/">Carter Yagemann</a> and <a href="https://zhiqlin.github.io/">Zhiqiang Lin</a>;
-      with <a>Patrick Gould</a>, <a href="https://christopher-simon-liu.github.io">Christopher Simon Liu</a>, and <a>Luke Cooper</a>.
-    </div>
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/robbie01">@robbie01</a></dd>
 
-    <h2>Education</h2>
-    <div>
-      <strong>The Ohio State University</strong>, Columbus, Ohio (2021&ndash;2025)<br>
-      <em>B.S. (cum laude), Computer Science and Engineering</em>
-    </div>
+          <dt>LinkedIn</dt>
+          <dd><a href="https://www.linkedin.com/in/robert-b-langer">linkedin.com/in/robert-b-langer</a></dd>
 
-    <h2>CTF participation</h2>
-    <ul>
-      <li>BuckeyeCTF 2025 &ndash; 1<sup>st</sup> place (OSU division)</li>
-      <li>BuckeyeCTF 2022 &ndash; 2<sup>nd</sup> place (OSU division)</li>
-      <li>BuckeyeCTF 2021 &ndash; 2<sup>nd</sup> place (OSU division)</li>
-    </ul>
+          <dt>ORCID</dt>
+          <dd><a href="https://orcid.org/0009-0009-5200-7259">0009-0009-5200-7259</a></dd>
 
-    <h2>CTF writeups</h2>
-    <ul>
-      <li><a href="/writeup/beezchurger">beezchurger (BuckeyeCTF 2025)</a></li>
-      <li><a href="/writeup/isthatyourpacket">Is that your packet? (pbctf 2021)</a></li>
-    </ul>
+          <dt>Lab</dt>
+          <dd><a href="https://carteryagemann.com/pages/w3cil-lab.html">W3CIL Lab</a> (World 3 Cybersecurity Innovations Lab Lab)</dd>
+        </dl>
+      </section>
 
+      <section aria-labelledby="research-label">
+        <h2 id="research-label">Research</h2>
+        <article aria-labelledby="insure-label">
+          <strong id="insure-label">INSuRE+C</strong>, The Ohio State University (<time>2025</time>&ndash;<time>2026</time>)<br>
+          <em>Undergraduate Researcher</em><br>
+          <br>
+          CAE in Cybersecurity Community partnership with the National Security Agency (NSA).
+          Developed an agentic pipeline for automated static analysis and binary classification using Ghidra, with outputs mapped to vectors of Malware Behavior Catalog (MBC) labels.
+          Work was performed under the guidance of Drs. <a href="https://carteryagemann.com/">Carter Yagemann</a> and <a href="https://zhiqlin.github.io/">Zhiqiang Lin</a>;
+          with <a>Patrick Gould</a>, <a href="https://christopher-simon-liu.github.io">Christopher Simon Liu</a>, and <a>Luke Cooper</a>.
+        </div>
+      </section>
+
+      <section aria-labelledby="education-label">
+        <h2 id="education-label">Education</h2>
+        <article aria-labelledby="osu-label">
+          <strong id="osu-label">The Ohio State University</strong>, Columbus, Ohio (<time>2021</time>&ndash;<time>2025</time>)<br>
+          <em>B.S. (cum laude), Computer Science and Engineering</em>
+        </div>
+      </section>
+
+      <section aria-labelledby="ctf-participation-label">
+        <h2 id="ctf-participation-label">CTF participation</h2>
+        <ul>
+          <li>BuckeyeCTF <time>2025</time> &ndash; 1<sup>st</sup> place (OSU division)</li>
+          <li>BuckeyeCTF <time>2022</time> &ndash; 2<sup>nd</sup> place (OSU division)</li>
+          <li>BuckeyeCTF <time>2021</time> &ndash; 2<sup>nd</sup> place (OSU division)</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="ctf-writeups-label">
+        <h2 id="ctf-writeups-label">CTF writeups</h2>
+        <ul>
+          <li><a href="/writeup/beezchurger">beezchurger (BuckeyeCTF <time>2025</time>)</a></li>
+          <li><a href="/writeup/isthatyourpacket">Is that your packet? (pbctf <time>2021</time>)</a></li>
+        </ul>
+      </section>
+    </main>
     <footer>
-      &copy; 2026, Robert B. Langer
+      &copy; <time>2026</time>, Robert B. Langer
     </footer>
   </body>
 </html>

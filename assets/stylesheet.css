@@ -2,7 +2,7 @@ a {
     text-decoration: underline;
 }
 
-h1, .link-title, h2 {
+h1, dt, h2 {
     text-transform: lowercase;
 }
 
@@ -11,12 +11,31 @@ h2 {
     margin: 1em 0;
 }
 
-strong {
+strong, dt {
     font-weight: 500;
 }
 
-h1:hover, span:hover > .link-title {
+.weak {
+    font-weight: 400;
+}
+
+h1:hover, dt:hover, dt:has(+ dd:hover) {
     text-transform: none;
+}
+
+dt::after {
+    content: ":";
+    font-weight: 400;
+}
+
+dt, dd {
+    display: inline;
+    margin: 0;
+}
+
+dt::before {
+    content: "";
+    display: block;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,14 +58,22 @@ h1:hover, span:hover > .link-title {
 }
 
 @media only screen and (orientation: portrait) {
-    nav {
+    nav ul {
         flex-direction: column;
     }
 
-    nav .divider {
-        font-size: 0;
+    nav li:not(:last-child) {
+        padding-bottom: 1rem;
         border-bottom: 0.1rem solid var(--t-nav-link);
-        margin: 1rem 0;
+    }
+
+
+    nav li:not(:first-child) {
+        padding-top: 1rem;
+    }
+
+    nav li::after {
+        display: none;
     }
 
     nav a:not(:first-child):not(:link):hover::before {
@@ -87,7 +114,8 @@ body {
     max-width: 96rem;
 }
 
-nav {
+nav ul {
+    list-style-type: none;
     display: flex;
     background: var(--t-nav);
     padding: 1rem;
@@ -100,6 +128,10 @@ nav a {
     color: var(--t-nav-link);
     position: relative;
     text-decoration: none;
+}
+
+nav li:not(:last-child)::after {
+    content: "\00A0//\00A0";
 }
 
 nav a:link, nav a:visited {

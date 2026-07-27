@@ -11,8 +11,14 @@ h2 {
     margin: 1em 0;
 }
 
-strong, dt {
+h3, dt {
     font-weight: 500;
+}
+
+h3 {
+    display: inline;
+    font-size: inherit;
+    margin: 0;
 }
 
 .weak {

@@ -3,18 +3,31 @@
 <head>
     <meta charset="utf-8">
     <title>Is that your packet? (pbctf 2021)</title>
+    <style>
+        :root {
+            font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+        }
+
+        h1 {
+            font-family: Tahoma, Verdana, Geneva, "DejaVu Sans", sans-serif;
+        }
+
+        pre, code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
 </head>
 <body>
 
-<h1 id="is-that-your-packet-">Is that your packet? (pbctf 2021)</h1>
+<h1>Is that your packet? (pbctf 2021)</h1>
 <p>319 points | 11 solves</p>
-<p>Description:</p>
+<p><strong>Description</strong>:</p>
 <blockquote>
 <p>Email is great and all, but what if there is no internet?</p>
 <p>**P.S. **<em>There is no guess work, stego and trial/error involved. If you know signals, then the file is all you need.</em></p>
 </blockquote>
-<p>Challenge author: elafargue</p>
-<p>Files: <a href="./sus.flac">sus.flac</a></p>
+<p><strong>Challenge author</strong>: elafargue</p>
+<p><strong>Files</strong>: <a href="./sus.flac">sus.flac</a></p>
 <hr>
 <p><em>No, but I&#39;m going to decode it anyway.</em></p>
 <p>I, operator of call sign KE8KAS, have dabbled in amateur radio on and off for a few years, interested especially in digital modes such as packet radio and <a href="https://freedv.org/">FreeDV</a>. Having listened to <a href="https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System">APRS</a> frequencies before just to hear what it should sound like, I immediately recognized the data as being encoded with the 1200-baud Bell 202 scheme, though my initial attempts at decoding it left me doubtful at first. Eventually, I stumbled accross <a href="http://uz7.ho.ua/packetradio.htm">UZ7HO&#39;s soundmodem</a>, which effortlessly decoded the <a href="https://en.wikipedia.org/wiki/AX.25">AX.25</a> frames streamed in through the sacred but mysterious, and sometimes elusive, <em>Stereo Mix</em> device. Check out the results:</p>

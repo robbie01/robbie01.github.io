@@ -410,6 +410,36 @@ footer {
         #eaebeb 4px 8px);
 }
 
+.theme-switch {
+    margin-top: 0.5rem;
+}
+
+/* a button, because it acts on the page rather than going anywhere */
+.theme-switch button {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    /* form controls opt out of these; the footer's caps should carry over */
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
+}
+
+.theme-switch button:hover {
+    color: var(--accent-dk);
+    text-decoration-color: var(--accent);
+}
+
+.theme-switch button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
 /* --- narrow screens ------------------------------------------------ */
 
 @media (max-width: 40em) {
@@ -469,7 +499,7 @@ footer {
         box-shadow: none;
     }
 
-    nav {
+    nav, .theme-switch {
         display: none !important;
     }
 

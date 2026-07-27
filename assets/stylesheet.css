@@ -25,6 +25,26 @@ h3 {
     font-weight: 400;
 }
 
+.theme-switch {
+    margin-top: 0.5rem;
+}
+
+/* a button, because it acts on the page rather than going anywhere */
+.theme-switch button {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.theme-switch button:hover {
+    color: var(--t-nav-link-hover);
+}
+
 h1:hover, dt:hover, dt:has(+ dd:hover) {
     text-transform: none;
 }
@@ -88,7 +108,7 @@ dt::before {
 }
 
 @media print {
-    nav {
+    nav, .theme-switch {
         display: none !important;
     }
 }

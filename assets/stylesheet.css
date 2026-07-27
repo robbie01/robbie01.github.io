@@ -25,6 +25,32 @@ h3 {
     font-weight: 400;
 }
 
+/* things that would be links if there were anywhere to point them */
+.unlinked {
+    text-decoration: underline dotted;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* a list whose items are nothing but links: those are not "inline in a
+   sentence", so they need a 24px-tall hit target -- WCAG 2.5.8.
+   (this has to be an explicit class: :only-child ignores text nodes, so it
+   also matches a link that merely opens a sentence.) */
+main .linklist > li > a {
+    display: inline-block;
+    padding-block: 0.6rem;
+}
+
 .theme-switch {
     margin-top: 0.5rem;
 }
@@ -41,8 +67,9 @@ h3 {
     cursor: pointer;
 }
 
+/* on the page background, not the nav bar, so it needs its own hover colour */
 .theme-switch button:hover {
-    color: var(--t-nav-link-hover);
+    color: var(--t-hover);
 }
 
 h1:hover, dt:hover, dt:has(+ dd:hover) {
@@ -59,6 +86,11 @@ dt, dd {
     margin: 0;
 }
 
+/* long URLs must not force sideways scrolling at 200% text -- WCAG 1.4.4 */
+dl {
+    overflow-wrap: break-word;
+}
+
 dt::before {
     content: "";
     display: block;
@@ -71,7 +103,8 @@ dt::before {
 
         --t-nav: rgb(0, 31, 33);
         --t-nav-link: #76d9ef;
-        --t-nav-link-hover: #5ca7b8;
+        --t-nav-link-hover: #5ca7b8;   /* 6.3:1 on the nav bar */
+        --t-hover: #5ca7b8;            /* 7.7:1 on the page background */
     }
 
     :link {
@@ -122,7 +155,9 @@ dt::before {
     --t-text: #404e3b;
     --t-nav: #404e3b;
     --t-nav-link: #e6e6e6;
-    --t-nav-link-hover: #7B9669;
+    /* hover sits on the dark nav bar, so it lightens; #7B9669 was 2.7:1 */
+    --t-nav-link-hover: #b9d2a7;   /* 5.4:1 on the nav bar */
+    --t-hover: #33502a;            /* 7.3:1 on the page background */
 
     font-size: 62.5%;
 
@@ -187,22 +222,19 @@ nav a:not(:link):hover::before {
     height: 4rem;
 }
 
+/* the accents live in the pseudo-element (alt text "") rather than the other
+   way round, so the accessible name matches the visible label -- WCAG 2.5.3 */
 a.resume-link:link {
-    color: transparent;
     position: relative;
 }
 
-.resume-link::before {
+a.resume-link:link:hover {
+    color: transparent;
+}
+
+a.resume-link:link:hover::before {
     position: absolute;
-    color: var(--t-nav-link);
-    content: "resume" / "";
-    text-decoration: underline;
-}
-
-a.resume-link:hover {
     color: var(--t-nav-link-hover);
-}
-
-.resume-link:hover::before {
-    display: none;
+    content: "résumé" / "";
+    text-decoration: underline;
 }

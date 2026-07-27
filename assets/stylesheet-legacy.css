@@ -16,7 +16,7 @@
 
     --ink: #1c1e1f;
     --ink-soft: #4b4f51;
-    --ink-weak: #83888b;
+    --ink-weak: #63686b;   /* 4.7:1 on the darkest zebra row -- WCAG 1.4.3 */
 
     --panel: #ffffff;
     --panel-alt: #f5f6f6;
@@ -63,6 +63,18 @@ body {
 ::selection {
     background: var(--accent);
     color: #fff;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* --- header banner ------------------------------------------------- */
@@ -159,7 +171,7 @@ nav a:not(:any-link) {
     color: var(--ink);
     font-weight: bold;
     background: var(--panel);
-    box-shadow: inset 0 -2px 0 var(--accent);
+    box-shadow: inset 0 -2px 0 var(--accent-dk);   /* 6.1:1 -- WCAG 1.4.11 */
 }
 
 nav a:not(:any-link):hover::before {
@@ -182,23 +194,17 @@ nav a:not(:any-link):hover::before {
         drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
 }
 
-/* the résumé gag: shows "resume" until you hover it */
-a.resume-link:link {
+/* the résumé gag: reads "resume" until you hover it.
+   the accents live in the pseudo-element (alt text "") rather than the other
+   way round, so the accessible name matches the visible label -- WCAG 2.5.3 */
+a.resume-link:link:hover {
     color: transparent;
 }
 
-a.resume-link:link::before {
-    position: absolute;
-    color: var(--ink-soft);
-    content: "resume" / "";
-}
-
-a.resume-link:link:hover {
-    color: var(--accent-dk);
-}
-
 a.resume-link:link:hover::before {
-    display: none;
+    position: absolute;
+    color: var(--accent-dk);
+    content: "résumé" / "";
 }
 
 /* --- main ---------------------------------------------------------- */
@@ -266,6 +272,15 @@ main li {
     margin-bottom: 0.5rem;
 }
 
+/* a list whose items are nothing but links: those are not "inline in a
+   sentence", so they need a 24px-tall hit target -- WCAG 2.5.8.
+   (this has to be an explicit class: :only-child ignores text nodes, so it
+   also matches a link that merely opens a sentence.) */
+main .linklist > li > a {
+    display: inline-block;
+    padding-block: 0.6rem;
+}
+
 main li::marker {
     color: #8f9496;
 }
@@ -305,15 +320,16 @@ main a:focus {
     text-decoration-color: var(--accent);
 }
 
-/* dead links (no href) read as plain text */
-main a:not(:any-link) {
+/* things that would be links if there were anywhere to point them */
+.unlinked {
     color: var(--ink);
-    text-decoration-style: dotted;
-    text-decoration-color: var(--rule);
+    text-decoration: underline dotted var(--rule);
+    text-underline-offset: 0.15em;
 }
 
-a:focus-visible {
-    outline: 2px solid var(--accent);
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent-dk);   /* 6.1:1 -- WCAG 1.4.11 */
     outline-offset: 1px;
 }
 
@@ -400,7 +416,7 @@ footer {
     font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: #6e7376;
+    color: #5f6467;   /* 5.0:1 on the striped panel -- WCAG 1.4.3 */
     text-align: center;
 
     padding: 0.9rem 1rem;
@@ -432,12 +448,7 @@ footer {
 
 .theme-switch button:hover {
     color: var(--accent-dk);
-    text-decoration-color: var(--accent);
-}
-
-.theme-switch button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
+    text-decoration-color: var(--accent-dk);
 }
 
 /* --- narrow screens ------------------------------------------------ */

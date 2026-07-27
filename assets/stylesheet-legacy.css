@@ -190,7 +190,7 @@ a.resume-link:link {
 a.resume-link:link::before {
     position: absolute;
     color: var(--ink-soft);
-    content: "resume";
+    content: "resume" / "";
 }
 
 a.resume-link:link:hover {

@@ -11,7 +11,7 @@
     var KEY = 'theme';
     var FALLBACK = 'default';
     var LABEL = {
-        'default': 'switch to legacy theme',
+        'default': 'switch to y2k mode',
         'legacy': 'switch to default theme'
     };
 
@@ -63,6 +63,7 @@
 
         var wrapper = document.createElement('div');
         wrapper.className = 'theme-switch';
+        // wrapper.appendChild(document.createElement('hr'))
         wrapper.appendChild(button);
         footer.appendChild(wrapper);
     });

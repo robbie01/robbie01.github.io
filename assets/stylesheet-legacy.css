@@ -1,0 +1,487 @@
+/* ------------------------------------------------------------------
+   robbie01.github.io -- "corporate intranet, ca. 2001"
+   light mode only. narrow column. small type.
+   ------------------------------------------------------------------ */
+
+@font-face {
+    font-family: "Bank Gothic Pro";
+    src: url("bankgothic-light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    color-scheme: only light;
+
+    --ink: #1c1e1f;
+    --ink-soft: #4b4f51;
+    --ink-weak: #83888b;
+
+    --panel: #ffffff;
+    --panel-alt: #f5f6f6;
+
+    --rule: #b7bbbd;
+    --rule-soft: #dfe1e2;
+    --frame: #8d9295;
+
+    --accent: #16a8ac;
+    --accent-dk: #0a6d72;
+
+    --sans: Verdana, Geneva, "DejaVu Sans", sans-serif;
+    --ui: Tahoma, Verdana, Geneva, "DejaVu Sans", sans-serif;
+    --display: "Bank Gothic Pro", "BankGothic Md BT", Tahoma, sans-serif;
+
+    font-size: 62.5%;
+    -webkit-text-size-adjust: 100%;
+
+    background-color: #b9bec0;
+    background-image:
+        repeating-linear-gradient(90deg,
+            rgba(255, 255, 255, 0.22) 0 1px,
+            rgba(0, 0, 0, 0) 1px 4px),
+        linear-gradient(180deg, #d3d7d9 0, #b0b5b8 60rem, #a9aeb1 100%);
+    background-attachment: fixed;
+}
+
+body {
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--ink);
+
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto 3.2rem;
+
+    background: var(--panel);
+    border: 1px solid var(--frame);
+    border-top: 0;
+    box-shadow: 0.3rem 0.3rem 0 rgba(0, 0, 0, 0.14);
+}
+
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* --- header banner ------------------------------------------------- */
+
+header {
+    border-bottom: 1px solid var(--frame);
+}
+
+h1 {
+    position: relative;
+    overflow: hidden;
+
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: 0.16em;
+    line-height: 1.1;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.65);
+
+    margin: 0;
+    padding: 1.5rem 1.4rem 1.3rem;
+
+    background-image:
+        repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.07) 0 1px,
+            rgba(0, 0, 0, 0) 1px 3px),
+        linear-gradient(180deg, #5c6164 0, #35393b 48%, #202324 49%, #131516 100%);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* dated turquoise hazard stripes, upper right */
+h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 14rem;
+    pointer-events: none;
+    background: repeating-linear-gradient(-45deg,
+        var(--accent) 0 2px,
+        rgba(0, 0, 0, 0) 2px 7px);
+    opacity: 0.75;
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, #000 100%);
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0, #000 100%);
+}
+
+/* --- navigation ---------------------------------------------------- */
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--ui);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+
+    background: linear-gradient(180deg,
+        #fdfdfd 0, #efefef 48%, #e0e0e0 49%, #d1d2d3 100%);
+    border-bottom: 1px solid var(--rule);
+}
+
+nav li {
+    border-right: 1px solid #a9adaf;
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.85);
+}
+
+nav a {
+    display: block;
+    position: relative;
+    padding: 0.6rem 1.2rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+}
+
+nav a:link,
+nav a:visited {
+    color: var(--ink-soft);
+}
+
+nav a[href]:hover {
+    color: var(--accent-dk);
+    background: linear-gradient(180deg,
+        #ffffff 0, #f6f6f6 48%, #eaeaea 49%, #dedfdf 100%);
+}
+
+/* current page: the anchor with no href */
+nav a:not(:any-link) {
+    color: var(--ink);
+    font-weight: bold;
+    background: var(--panel);
+    box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+nav a:not(:any-link):hover::before {
+    display: none; /* nix this for this theme */
+  
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    left: 0.2rem;
+    bottom: calc(100% - 0.4rem);
+    width: 12rem;
+    height: 4.6rem;
+    background-image: url("youarehere.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* the banner behind it is nearly black; give the marker an outline */
+    filter:
+        drop-shadow(0 0 1px #fff)
+        drop-shadow(0 0 2px rgba(255, 255, 255, 0.85))
+        drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+/* the résumé gag: shows "resume" until you hover it */
+a.resume-link:link {
+    color: transparent;
+}
+
+a.resume-link:link::before {
+    position: absolute;
+    color: var(--ink-soft);
+    content: "resume";
+}
+
+a.resume-link:link:hover {
+    color: var(--accent-dk);
+}
+
+a.resume-link:link:hover::before {
+    display: none;
+}
+
+/* --- main ---------------------------------------------------------- */
+
+main {
+    display: block;
+    padding: 1.6rem 1.8rem 2rem;
+}
+
+main > em {
+    display: block;
+    font-family: var(--ui);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-weak);
+    text-align: center;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    background: repeating-linear-gradient(-45deg,
+        #f6f7f7 0 4px,
+        #eff0f0 4px 8px);
+}
+
+section + section {
+    margin-top: 2rem;
+}
+
+h2 {
+    font-family: var(--ui);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: #2c3032;
+
+    margin: 0 0 0.9rem;
+    padding: 0.4rem 0.7rem;
+
+    background: linear-gradient(180deg,
+        #fbfbfb 0, #f0f0f0 48%, #e4e5e5 49%, #d8d9da 100%);
+    border: 1px solid var(--rule);
+    border-left: 0.4rem solid #5a6063;
+}
+
+main > section:first-of-type h2 {
+    margin-top: 0;
+}
+
+main > em + section {
+    margin-top: 2rem;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+ul, ol {
+    margin: 0 0 1rem;
+    padding-left: 1.8rem;
+}
+
+main li {
+    list-style: square;
+    margin-bottom: 0.5rem;
+}
+
+main li::marker {
+    color: #8f9496;
+}
+
+time {
+    font-variant-numeric: tabular-nums;
+}
+
+sup, sub {
+    font-size: 0.85em;
+    line-height: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- links --------------------------------------------------------- */
+
+a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+main a:link {
+    color: #23272a;
+}
+
+main a:visited {
+    color: #5d6265;
+}
+
+main a:hover,
+main a:focus {
+    color: var(--accent-dk);
+    text-decoration-color: var(--accent);
+}
+
+/* dead links (no href) read as plain text */
+main a:not(:any-link) {
+    color: var(--ink);
+    text-decoration-style: dotted;
+    text-decoration-color: var(--rule);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+/* --- definition list: the corporate data table ---------------------- */
+
+dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    margin: 0;
+    border: 1px solid var(--rule);
+    border-bottom: 0;
+}
+
+dt {
+    font-family: var(--ui);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #35393b;
+
+    margin: 0;
+    padding: 0.45rem 0.9rem 0.45rem 0.7rem;
+    border-bottom: 1px solid var(--rule-soft);
+    border-right: 1px solid var(--rule-soft);
+    background: linear-gradient(90deg, #eceeee 0, #f7f8f8 100%);
+    white-space: nowrap;
+}
+
+dd {
+    margin: 0;
+    padding: 0.45rem 0.7rem;
+    border-bottom: 1px solid var(--rule-soft);
+    overflow-wrap: break-word;
+}
+
+dt:nth-of-type(even),
+dt:nth-of-type(even) + dd {
+    background-color: #fbfbfb;
+}
+
+dt:nth-of-type(even) {
+    background-image: linear-gradient(90deg, #e8eaea 0, #f2f3f3 100%);
+}
+
+.weak {
+    font-family: var(--sans);
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-weak);
+}
+
+/* --- articles ------------------------------------------------------ */
+
+article {
+    padding: 0.9rem 1rem;
+    background: linear-gradient(180deg, #fcfcfc 0, #f2f3f3 100%);
+    border: 1px solid var(--rule-soft);
+    border-left: 2px solid #b0b5b7;
+}
+
+article + article {
+    margin-top: 0.8rem;
+}
+
+article h3 {
+    display: inline;
+    margin: 0;
+    font-family: var(--ui);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+}
+
+article em {
+    color: var(--ink-soft);
+}
+
+/* --- footer -------------------------------------------------------- */
+
+footer {
+    display: block;
+    font-family: var(--ui);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6e7376;
+    text-align: center;
+
+    padding: 0.9rem 1rem;
+    border-top: 1px solid var(--rule);
+    background: repeating-linear-gradient(-45deg,
+        #f2f3f3 0 4px,
+        #eaebeb 4px 8px);
+}
+
+/* --- narrow screens ------------------------------------------------ */
+
+@media (max-width: 40em) {
+    body {
+        border-left: 0;
+        border-right: 0;
+        box-shadow: none;
+    }
+
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 0.1em;
+    }
+
+    h1::after {
+        width: 8rem;
+    }
+
+    nav ul {
+        display: block;
+    }
+
+    nav li {
+        border-right: 0;
+        border-bottom: 1px solid #a9adaf;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
+
+    nav a:not(:any-link):hover::before {
+        display: none;
+    }
+
+    main {
+        padding: 1.2rem 1.2rem 1.6rem;
+    }
+
+    dl {
+        display: block;
+    }
+
+    dt {
+        border-right: 0;
+        white-space: normal;
+    }
+}
+
+/* --- print --------------------------------------------------------- */
+
+@media print {
+    :root {
+        background: #fff;
+    }
+
+    body {
+        max-width: none;
+        border: 0;
+        box-shadow: none;
+    }
+
+    nav {
+        display: none !important;
+    }
+
+    h1 {
+        color: #000;
+        background: none;
+        text-shadow: none;
+        border-bottom: 1px solid #000;
+        padding-left: 0;
+    }
+
+    h1::after {
+        display: none;
+    }
+}

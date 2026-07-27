@@ -108,6 +108,10 @@ dt::before {
 }
 
 @media print {
+    header {
+        border-bottom: 1px solid #000;
+    }
+
     nav, .theme-switch {
         display: none !important;
     }
